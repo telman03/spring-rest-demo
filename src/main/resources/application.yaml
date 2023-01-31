@@ -1,0 +1,18 @@
+server:
+  port: 8082
+  servlet:
+    context-path: /api
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/be5
+    username: postgres
+    password: eden258
+
+  jpa:
+    show-sql: true
+    generate-ddl: true
+
+
+
+
