@@ -42,13 +42,11 @@ public class StudentController {
 
 
     @PutMapping("/{id}")
-    @ResponseStatus()
     public void updateAll(@RequestBody StudentDto studentDto, @PathVariable("id") Integer id){
         studentService.updateAll(studentDto,id);
     }
 
     @PatchMapping("/{id}")
-    @ResponseStatus()
     public void updateSome(@RequestBody StudentDto studentDto, @PathVariable("id") Integer id){
         studentService.updateSome(studentDto,id);
     }

@@ -23,7 +23,7 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public StudentResponse getAllStudents() {
         List<StudentDto> studentDtoList = studentRepository.findAll().stream()
-                .map(student -> convertToDto(student))
+                .map(this::convertToDto)
                 .collect(Collectors.toList());
 
 
@@ -34,14 +34,14 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public StudentDto getStudent(Integer id) {
         return studentRepository.findById(Long.valueOf(id))
-                .map(student -> convertToDto(student))
+                .map(this::convertToDto)
                 .orElseThrow(()->new CustomRestException(ErrorCodeEnum.STUDENT_NOT_FOUND.getMessage()));
     }
 
     @Override
     public StudentResponse getByNameAndLastname(String name, String lastname) {
         List<StudentDto> students = studentRepository.findByNameAndLastname(name, lastname)
-                .stream().map(student -> convertToDto(student))
+                .stream().map(this::convertToDto)
                 .collect(Collectors.toList());
 
 
@@ -82,13 +82,6 @@ public class StudentServiceImpl implements StudentService {
 
 
     private StudentDto convertToDto(Student student){
-//        return StudentDto.builder()
-//                .id(student.getId())
-//                .name(student.getName())
-//                .lastname(student.getLastname())
-//                .major(student.getMajor())
-//                .build();
-
         StudentDto studentDto = new StudentDto();
         BeanUtils.copyProperties(student,studentDto);
         return studentDto;
