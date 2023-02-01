@@ -46,6 +46,8 @@ public class StudentController {
         studentService.updateAll(studentDto,id);
     }
 
+
+
     @PatchMapping("/{id}")
     public void updateSome(@RequestBody StudentDto studentDto, @PathVariable("id") Integer id){
         studentService.updateSome(studentDto,id);
