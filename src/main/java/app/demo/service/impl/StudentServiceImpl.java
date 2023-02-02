@@ -74,6 +74,7 @@ public class StudentServiceImpl implements StudentService {
         studentRepository.save(student);
     }
 
+
     private Student getStudentById(Integer id){
         return studentRepository.findById(Long.valueOf(id))
                 .orElseThrow(() -> new CustomRestException(ErrorCodeEnum.STUDENT_NOT_FOUND.getMessage()));
